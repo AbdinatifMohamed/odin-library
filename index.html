@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="topbar">
+            <h2>ODIN LIBRARY</h2>
+            <button>Create Book</button>
+        </div>
+        <div class="shelves">
+            <div class="shelfone">
+            </div>
+            <div class="shelftwo"></div>
+            <div class="shelfthree"></div>
+        </div>
+    </main>
+    <dialog id="theDialog" open>
+        <form id="dialogform">
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author" required>
+            </div>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div>
+                <label for="pages">Pages:</label>
+                <input type="number" name="pages" id="pages" required>
+            </div>
+            <div>
+                <label for="read">Read:</label>
+                <input type="checkbox" name="read" id="read" >
+            </div>
+            <div>
+                <button id="formcreate" type="submit">Create</button>
+                <button id="formcancel" type="">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+    <script src="main.js"></script>
+</body>
+</html>
