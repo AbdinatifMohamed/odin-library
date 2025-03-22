@@ -21,7 +21,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 25rem;
     width: 50rem;
     padding: 1rem;
@@ -67,6 +67,17 @@ main {
     background-color: #474646;
     height: 80%;
     width: 10%;
+}
+
+.shelves > div > div > button {
+    color: #fff;
+    border-radius: 100%;
+    background-color: rgb(231 44 44);
+    border: none;
+    padding: .1rem .3rem;
+    position: relative;
+    left: 80%;
+    bottom: 5%;
 }
 
 #theDialog {
