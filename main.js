@@ -1,3 +1,76 @@
+class Book {
+   constructor(author, title, pages, read) {
+      this.author = author;
+      this.title = title;
+      this.pages = pages;
+      this.read = read;
+      this.id = crypto.randomUUID();
+      
+      // Create the DOM elements
+      this.object = document.createElement("div");
+      this.deletebutton = document.createElement("button");
+      this.deletebutton.textContent = "X";
+      this.object.appendChild(this.deletebutton);
+  
+      // Add Event Listeners
+      this.deletebutton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.onDelete();
+      });
+  
+      this.object.addEventListener("click", (e) => {
+        formauthor.value = this.author;
+        formtitle.value = this.title;
+        formpages.value = this.pages;
+        formread.checked = this.read;
+        createbtn.textContent = "Update";
+        currentstate = state.UPDATE;
+        currentbook = this;
+        dialog.showModal();
+      });
+    }
+  
+    // Method to handle deletion
+    onDelete() {
+      this.object.remove();
+      myLibrary = myLibrary.filter((book) => book.id !== this.id);
+    }
+  
+    // Setter methods for updating properties
+    set author(author) {
+      this._author = author;
+    }
+  
+    set title(title) {
+      this._title = title;
+    }
+  
+    set pages(pages) {
+      this._pages = pages;
+    }
+  
+    set read(read) {
+      this._read = read;
+    }
+  
+    // Getter methods for properties
+    get author() {
+      return this._author;
+    }
+  
+    get title() {
+      return this._title;
+    }
+  
+    get pages() {
+      return this._pages;
+    }
+  
+    get read() {
+      return this._read;
+    }
+} 
+ 
  const dialog = document.querySelector("#theDialog");
  const cancelbtn = document.querySelector("#formcancel");
  const createbtn = document.querySelector("#formcreate");
@@ -20,43 +93,6 @@
  let currentstate = state.CREATE;
  let currentbook;
 
- function Book(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
-    this.object = document.createElement("div");
-    this.deletebutton = document.createElement("button");
-    this.deletebutton.textContent = "X";
-    this.object.appendChild(this.deletebutton);
-
-
-    this.onDelete = function(){
-        this.object.remove();
-        myLibrary = myLibrary.filter((book) => book.id !== this.id);
-    }
-
-    this.object.addEventListener("click", (e) => {
-         formauthor.value = this.author;
-         formtitle.value = this.title;
-         formpages.value = this.pages;
-         formread.checked = this.read;
-         
-         createbtn.textContent = "Update";
-
-         currentstate = state.UPDATE;
-         currentbook = this;
-         dialog.showModal()
-    });
-
-    this.deletebutton.addEventListener("click", (e) => {
-      e.stopPropagation();
-      this.onDelete();
-    })
-
-   // the constructor...
- }
  
  function addBookToLibrary(author, title, pages, read) {
    const newBook = new Book(author, title, pages, read);
